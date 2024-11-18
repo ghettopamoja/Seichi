@@ -202,11 +202,16 @@ header::after {
 }
 
 
-@media  screen and (max-width: 768px) {
+@media  screen and (max-width: 800px) {
     /* Navbar layout for small screens */
+    body{
+        width: 90%;
+    }
+
     header {
-        padding: 10px 15px;
+        padding: 5px 10px;
         background: linear-gradient(135deg, #f72585, #7209b7);
+        width: 95%;
     }
 
     .navbar {
