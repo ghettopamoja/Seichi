@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 scalable='no'">
+    <title>Seichi Shopping Website</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+
+    <div class="welcome-overlay">
+        <div class="welcome-div">
+            <div class="close-welcome"><span>&times;</span></div>
+        </div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <div class="image-logo">
+                    <img src="logo (2).jpg" alt="Logo_image">
+                </div>
+                <a href="#">Seichi Clothing</a>
+            </div>
+            
+            <!-- Hamburger Icon -->
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Men</a></li>
+                        <li><a href="#">Women</a></li>
+                        <li><a href="#">Electronics</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Sale</a></li>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Best Sellers</a></li>
+            </ul>
+    
+            <!-- Search and Cart Section -->
+            <div class="search-cart" id="search-cart">
+                <input type="text" placeholder="Search products...">
+                <a href="#" class="cart-icon">🛒</a>
+                <a href="#" class="account-icon">👤</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="content">
+            <div class="direct-div">
+                <img src="logo (2).jpg" alt="logo">
+                <div class="text-direction">
+                    <h3>Welcome</h3>
+                </div>
+
+            </div>
+            <div class="video-intro-container">
+                <video src="introVid.mp4" autoplay muted loop playsinline webkit-playsinline>
+                    Your browser does not support the video tag.
+                </video>
+
+            </div>
+        </div>
+        
+
+        <div class="container">
+
+            <div class="direct-div">
+                <img src="result.gif" alt="gify-direct">
+            
+                <div class="text-direction">
+                    <h3>Start Here</h3>
+                </div>
+            </div>
+            
+            <div class="signup-container">
+                <h2>Create Your Account</h2>
+                <form id="signup-form">
+                    <!-- Full Name -->
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                    </div>
+            
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+            
+                    <!-- Password -->
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    </div>
+            
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                    </div>
+            
+                    <!-- Sign Up Button -->
+                    <button type="submit" class="signup-btn">Sign Up</button>
+            
+                    <!-- Already have an account -->
+                    <p class="signin-link">Already have an account? <a href="#">Login here</a></p>
+                </form>
+            </div>
+
+        </div>
+        
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

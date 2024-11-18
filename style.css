@@ -1,0 +1,653 @@
+*/ {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0056b3, #00ffb7);
+    background-image: url('logo\ \(2\).jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; /* Ensures the entire image is visible */
+}
+
+
+header {
+    background: linear-gradient(135deg, #f72585, #7209b7); /* Gradient background */
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 98%;
+    z-index: 100;
+    overflow: hidden; /* Ensures the shine effect doesn't overflow */
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start off-screen */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shine 3s infinite; /* Infinite animation */
+    z-index: 101; /* Ensures it is above the header content */
+}
+
+@keyframes shine {
+    from {
+        left: -100%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.logo a {
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+}
+
+/* Dropdown */
+.nav-links li {
+    position: relative;
+}
+
+.nav-links .dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    color: #333;
+    list-style: none;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links .dropdown li {
+    padding: 5px 10px;
+}
+
+.nav-links li:hover .dropdown {
+    display: block;
+}
+
+.nav-links .dropdown a {
+    color: #333;
+}
+
+/* Search and Cart Section */
+.search-cart {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-cart input {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* White Icons */
+.cart-icon, .account-icon {
+    font-size: 1.5rem;
+    color: #fff; /* Set icons to white */
+    text-decoration: none;
+    transition: transform 0.2s ease-in-out, color 0.2s;
+}
+
+/* Add Hover Effect */
+.cart-icon:hover, .account-icon:hover {
+    transform: scale(1.1); /* Slight zoom-in on hover */
+    color: #ffd1dc; /* Optional: Add a softer hover color (light pink) */
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    margin-right: 25px;
+    position: absolute;
+    top: 25px;
+    right: 10px;
+}
+
+.hamburger .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+}
+
+/* Transform hamburger into "X" when active */
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg);
+    position: relative;
+    top: 8px;
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0; /* Hide the middle bar */
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg);
+    position: relative;
+    top: -8px;
+}
+
+
+
+/* When the hamburger is clicked, show the navigation */
+.navbar.active .nav-links {
+    right: 0; /* Slide in from the right */
+}
+
+.navbar.active #search-cart {
+    display: flex; /* Show search and cart */
+}
+
+
+@media  screen and (max-width: 768px) {
+    /* Navbar layout for small screens */
+    header {
+        padding: 10px 15px;
+        background: linear-gradient(135deg, #f72585, #7209b7);
+    }
+
+    .navbar {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: flex-start;
+    }
+
+    .logo {
+        margin-bottom: 15px;
+    }
+
+    /* Logo image size */
+    .logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* Hide the nav links by default */
+    .nav-links {
+        display: none;
+        width: 80%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
+
+    /* Show nav links when the navbar is active */
+    .navbar.active .nav-links {
+        display: flex;
+        gap: 15px;
+    }
+
+    .nav-links a {
+        padding: 10px;
+        width: 100%;
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    .nav-links .dropdown {
+        position: static;
+        box-shadow: none;
+        background-color: transparent;
+    }
+
+    /* Show hamburger icon on small screens */
+    .hamburger {
+        display: flex;
+        margin-left: auto;
+    }
+
+    /* Search and Cart section */
+    .search-cart {
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+
+    .search-cart input {
+        width: 70%;
+        outline: none;
+    }
+
+    .cart-icon, .account-icon {
+        font-size: 1.8rem;
+    }
+
+    /* Hide icons initially on small screens */
+    .search-cart a {
+        display: none;
+    }
+
+    .navbar.active #search-cart a {
+        display: inline-block;
+    }
+
+    /* Adjust background size for smaller screens */
+    body {
+        background-size: cover;
+    }
+}
+
+/* When the hamburger is clicked, show the navigation and search-cart */
+@media screen and (max-width: 800px) {
+    .navbar.active .nav-links {
+        display: flex; /* Show the nav links */
+    }
+
+    .navbar.active  .search-cart input {
+        width: 50%;
+        
+    }
+
+    
+
+    .navbar.active #search-cart {
+        display: flex; /* Show search and cart */
+    }
+}
+
+/**************************************************************************************************************************************/
+
+/* Welcome Overlay */
+.welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    z-index: 10;
+}
+
+.welcome-message {
+    text-align: center;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.welcome-message h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.welcome-message p {
+    font-size: 18px;
+}
+
+
+/**********************************************************************************************************************************/
+
+/* Form styling for signup-container */
+.signup-container {
+    width: 100%;
+    max-width: 500px; /* Match the max width of other components */
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 90vh;
+}
+
+
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Form Heading */
+.signup-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+    
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #f0f0f0;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 98%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    font-size: 14px;
+    color: #f0f0f0;
+    background-color: transparent;
+}
+.form-group input::placeholder{
+    color: #fac105fb;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Signup Button */
+.signup-btn {
+    width: 100%;
+    background-color: #ff00e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Sign-in Link */
+.signin-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #f0f0f0;
+}
+
+.signin-link a {
+    color: gold;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signin-link a:hover {
+    text-decoration: underline;
+}
+
+@media  screen and (max-width: 800px) {
+    /* Signup container adjustments */
+    .signup-container {
+        width: 90%; /* Use 90% of the screen width for better fitting */
+        max-width: 400px; /* Reduce max width for smaller screens */
+        padding: 15px; /* Increase padding for spacing */
+        height: auto; /* Adjust height to fit content */
+        margin: 0 auto; /* Center the container */
+    }
+
+    /* Form Heading */
+    .signup-container h2 {
+        font-size: 20px; /* Adjust heading size for mobile */
+        margin-bottom: 15px;
+    }
+
+    /* Form Group adjustments */
+    .form-group {
+        margin-bottom: 15px; /* Reduce margin */
+    }
+
+    .form-group label {
+        font-size: 12px; /* Smaller font size for labels */
+    }
+
+    .form-group input {
+        font-size: 14px; /* Ensure input font is readable */
+        padding: 8px; /* Reduce padding inside inputs */
+    }
+
+    /* Adjust input focus */
+    .form-group input:focus {
+        box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+    }
+
+    /* Signup Button adjustments */
+    .signup-btn {
+        font-size: 14px; /* Smaller font size for button */
+        padding: 10px; /* Adjust padding for mobile */
+    }
+
+    .signup-btn:hover {
+        background-color: #0056b3; /* Adjust hover color for better contrast */
+    }
+
+    /* Sign-in Link */
+    .signin-link {
+        margin-top: 10px;
+        font-size: 12px; /* Smaller font size for sign-in link */
+    }
+
+    .signin-link a {
+        font-size: 14px; /* Adjust font size for the link */
+    }
+
+    .signin-link a:hover {
+        text-decoration: underline;
+    }
+}
+
+
+/*******************************************************************************************************************/
+
+main {
+    display: flex; /* Flexbox for side-by-side layout */
+    width: 100%; /* Full width of the main container */
+    min-height: 100vh; /* Full viewport height */
+    margin-top: 80px; /* To account for the fixed header */
+}
+
+main .content, main .container {
+    flex: 1; /* Equal width for both sections (50%) */
+    padding: 20px; /* Add inner spacing */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.05); /* Soft background for distinction */
+    height: auto; /* Allow content to dictate height */
+}
+
+@media screen and (max-width: 800px) {
+    /* Main container layout for small screens */
+    main {
+        flex-direction: column; /* Stack the sections vertically */
+        margin-top: 120px; /* Adjust margin to prevent overlap with fixed header */
+    }
+
+    /* Adjust content and container section layout */
+    main .content, main .container {
+        flex: none; /* Remove the equal width for both sections */
+        width: 99%; /* Full width on small screens */
+        padding: 15px; /* Reduce padding for smaller screens */
+        background-color: rgba(0, 0, 0, 0.05); /* Keep the soft background */
+        margin-bottom: 20px; /* Add some space between sections */
+    }
+
+    /* Center content vertically for smaller screen */
+    main .content, main .container {
+        align-items: center;
+        justify-content: flex-start; /* Start content from the top */
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+/* Style for video container */
+.video-intro-container {
+    width: 100%; /* Stretch video to fit its parent */
+    max-width: 500px; /* Limit the video container width */
+    border-radius: 10px;
+    overflow: hidden;
+    height: 100vh;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.video-intro-container video {
+    width: 100%;
+    height: auto; /* Maintain video aspect ratio */
+    object-fit: cover; /* Prevent distortion */
+}
+
+@media screen and (max-width: 800px) {
+    /* Video container adjustments */
+    .video-intro-container {
+        width: 100%; /* Use full width of the screen */
+        max-width: 100%; /* Remove the max-width to allow full width */
+        height: 80vh; /* Limit the height to half of the viewport height */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Reduce shadow for small screens */
+        margin-bottom: 20px; /* Add margin for better spacing */
+    }
+
+    /* Video element adjustments */
+    .video-intro-container video {
+        height: 100%; /* Fill the height of the container */
+        object-fit: cover; /* Ensure video maintains its aspect ratio without distortion */
+    }
+}
+
+
+/********************************************************************************************************************************/
+
+/* Ensure consistent spacing for .direct-div */
+.direct-div {
+    display: flex; /* Side-by-side layout */
+    align-items: center; /* Vertical alignment */
+    gap: 20px; /* Space between image and text */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6); /* Soft pink */
+    border: 2px solid #f72585; /* Theme-colored border */
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 20px 0; /* Vertical spacing between sections */
+    width: 100%; /* Make it responsive */
+    max-width: 500px; /* Limit width to prevent overflow */
+    height: 20vh;
+}
+
+.direct-div img {
+    width: 300px; /* Adjust size for balance */
+    height: 150px; /* Maintain aspect ratio */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.direct-div .text-direction h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #f72585;
+}
+
+@media screen and (max-width: 800px) {
+    /* Direct-div container adjustments */
+    .direct-div {
+        flex-direction: column; /* Stack image and text vertically on smaller screens */
+        align-items: center; /* Center align both elements */
+        gap: 10px; /* Reduce space between image and text */
+        padding: 15px; /* Adjust padding for smaller screens */
+        background-color: rgba(0, 0, 0, 0.6); /* Keep the background */
+        border: 2px solid #f72585; /* Theme-colored border */
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 15px 0; /* Reduced margin for smaller screens */
+        width: 80%; /* Full width */
+        max-width: 100%; /* Remove max-width to fill screen */
+        height: 20vh; /* Allow height to adjust based on content */
+    }
+
+    /* Image adjustments */
+    .direct-div img {
+        width: 80%; /* Use 80% of the screen width */
+        height: 80%; /* Maintain aspect ratio */
+        max-width: 300px; /* Limit the width to prevent it from becoming too large */
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Text adjustments */
+    .direct-div .text-direction h3 {
+        font-size: 1.2rem; /* Adjust font size for mobile */
+        color: #f72585;
+        text-align: center; /* Center align the heading */
+    }
+}
+
+
+/*************************************************************************************************************************/
