@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, scalable='no'">
+    <title>Seichi User Authentication Page</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="shortcut icon" href="logo (2).jpg" type="image/x-icon">
+</head>
+<body>
+    <div class="congratulation-overlay">
+        <div class="congratulation-close"><span>&times;</span></div>
+        <div class="congratulation-content">
+            <h3>Congratulations <span id="nameUser"></span></h3>
+            <ul> </ul>
+        </div>
+    </div>
+    <header>
+        <div class="container">
+            <!-- Logo and branding -->
+            <div class="logo">
+                <div class="image-logo">
+                    <img src="logo (2).jpg" alt="Seichi Logo" class="logo-image">
+                </div>
+                <a href="#">Seichi Clothing</a>
+            </div>
+            
+            <!-- Header text -->
+            <div class="header-text">
+                <h1>Welcome to Seichi</h1>
+                <p>Please sign in or sign up to continue</p>
+            </div>
+        </div>
+    </header>
+
+   <main>
+   <div class="auth-div">
+
+        <div class="left-auth-div">
+            <h2>Welcome to Seichi Clothings.</h2>
+            <div class="welcome-message">
+                <p>Hello, new user! We're excited to have you here. Start your journey with us!</p>
+            </div>
+            <div class="login-button">
+                <p>Already have an account?</p>
+                <button>Login Here</button>
+            </div>
+        </div>
+    
+        <div class="right-auth-div">
+            <div class="signup-container">
+                <h2>Sign-up Here</h2>
+                <form id="signup-form">
+                    <!-- Full Name -->
+                    <fieldset>
+                        <legend>Create your account</legend>
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                        </div>
+                
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        </div>
+                
+                        <!-- Password -->
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Create a password" required>
+                        </div>
+                
+                        <!-- Confirm Password -->
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                        </div>
+                
+                        <!-- Sign Up Button -->
+                        <button type="submit" class="signup-btn">Sign Up</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+   </div>
+
+   <div class="auth-div">
+            <div class="left-auth-div">
+                <h2>Welcome to Seichi Clothings.</h2>
+                <div class="welcome-message">
+                    <!-- Welcome message for users -->
+                    <p class="new-user-message">Hello, new user! Join us and start your style journey today!</p>
+                    <p class="returning-user-message">Welcome back! It's great to see you again. Let’s pick up where we left off!</p>
+                </div>
+                <div class="signup-button">
+                    <p>Don't have an account?</p>
+                    <button>Signup Here</button>
+                </div>
+            </div>
+        
+        <div class="right-auth-div">
+            <div class="login-container">
+                <h2>Login Here</h2>
+                <form class="login-form">
+                    <fieldset>
+                        <legend>Login to Your Account</legend>
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userEmail">Email Address</label>
+                            <input type="email" id="userEmail" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="userPassword">Password</label>
+                            <input type="password" id="userPassword" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-confirm-password">Confirm Password</label>
+                            <input type="password" id="user-confirm-password" name="confirmPassword" placeholder="Confirm your password" required>
+                        </div>
+                       <div class="form-group">
+                        <button type="submit" class="login-btn">Login</button>
+                       </div>
+                    </fieldset>
+                </form>
+            </div>
+                 
+            </div>
+    </div>
+   </main>
+
+
+    
+   <script src='login.js'></script>
+</body>
+</html>

@@ -1,0 +1,598 @@
+*/ {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0056b3, #00ffb7);
+    background-image: url('logo\ \(2\).jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; /* Ensures the entire image is visible */
+}
+
+
+
+
+header {
+    background: linear-gradient(135deg, #f72585, #7209b7); /* Gradient background */
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    height:65px;
+    z-index: 100;
+    overflow: hidden; /* Ensures the shine effect doesn't overflow */
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start off-screen */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shine 3s infinite; /* Infinite animation */
+    z-index: 101; /* Ensures it is above the header content */
+}
+
+@keyframes shine {
+    from {
+        left: -100%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+    
+}
+
+.logo a {
+    font-size: 1.5rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+@media (max-width: 800px) {
+    body {
+        background-size: cover; /* Adjust background image for smaller screens */
+        height: 200vh;
+    }
+
+    header {
+        height: 55px; /* Slightly shorter header */
+        width: 100%;
+        padding: 5px 10px; /* Reduced padding */
+    }
+
+    .logo img {
+        width: 40px; /* Smaller logo */
+        height: 40px;
+        margin-right: 8px;
+    }
+
+    .logo a {
+        font-size: 1.2rem; /* Smaller text */
+    }
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------*/
+
+main{
+    margin-top: 100px;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------------*/
+.auth-div {
+    width: 98%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    position: absolute; /* To stack both divs in the same position */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth transition */
+    
+}
+
+.auth-div:last-child {
+    display: flex; /* Keep it flexible for the animation */
+    transform: translateX(100%); /* Move out of view initially */
+    opacity: 0;
+    flex-direction: row-reverse;
+}
+
+/* Active class for sliding in */
+.auth-div.active {
+    transform: translateX(0);
+    opacity: 1;
+    
+}
+
+/* Non-active class for sliding out */
+.auth-div.inactive {
+    transform: translateX(-100%);
+    opacity: 0;
+    
+}
+
+
+.left-auth-div, .right-auth-div {
+    flex: 1; /* Equal width */
+    height: 100%; /* Match the parent's height */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-auth-div {
+    background-color: transparent; /* Light background */
+    color: #333; /* Text color */
+    padding: 10px;
+    border-radius: 10px; /* Smooth edges */
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    background-image: url('img1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.left-auth-div::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2;
+    border-radius: 10px;
+}
+
+.left-auth-div > *{
+    z-index: 3;
+}
+
+
+
+@keyframes shine2 {
+    from {
+        left: 0%;
+       
+    }
+    to {
+        left: 80%;
+        
+    }
+}
+
+.left-auth-div h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #f9f9f9; /* Highlighted color */
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    padding: 10px 20px;
+    border-radius: 10px;
+    position: relative;
+    width: 90%;
+}
+
+.left-auth-div h2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 30%; /* Start off-screen */
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shine2 3s infinite reverse; /* Infinite animation */
+    z-index: -1; /* Ensures it is above the header content */
+}
+
+.welcome-message {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: #f9f9f9; /* Highlighted color */
+    padding: 15px;
+    border-radius: 8px;
+    width: 100%; /* Fill the container */
+}
+
+.login-button {
+    margin-top: 20px;
+    color: #f9f9f9; /* Highlighted color */
+    width: 100%;
+    padding: 10px;
+    border: #f0f0f0 2px solid;
+    border-radius: 10px;
+}
+
+.login-button p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.login-button button {
+    background-color: #ff00e6; /* Button color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.new-user-message,
+.returning-user-message {
+    margin-bottom: 10px;
+}
+
+.signup-button {
+    margin-top: 20px;
+    color: #f9f9f9; /* Highlighted color */
+    width: 100%;
+    padding: 10px;
+    border: #f0f0f0 2px solid;
+    border-radius: 10px;
+}
+
+.signup-button p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.signup-button button  {
+    background-color: #ff00e6; /* Signup button with matching green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-button button:hover, .form-group button:hover {
+    background-color: #0056b3; /* Darker green on hover */
+}
+
+/* Base styles remain unchanged */
+
+
+@media (max-width: 800px) {
+    .auth-div {
+        flex-direction: column; /* Stack elements vertically */
+        height: auto; /* Allow height to adjust based on content */
+        width: 100%;
+    }
+
+    .auth-div:last-child {
+        transform: translateY(100%); /* Adjust transition direction for column layout */
+        flex-direction: column-reverse; /* Reverse the order vertically */
+    }
+
+    .auth-div.active {
+        transform: translateY(0); /* Vertical sliding in */
+        opacity: 1;
+    }
+
+    .auth-div.inactive {
+        transform: translateY(-100%); /* Vertical sliding out */
+        opacity: 0;
+    }
+
+    .left-auth-div, .right-auth-div {
+        flex: none; /* Remove equal flex sizing */
+        width: 96%; /* Make divs full-width */
+        padding: 20px; /* Add spacing */
+        border-radius: 0; /* Remove border radius for a clean edge */
+       
+    }
+    .right-auth-div{
+        width: 100%;
+        padding: 10px 15px;
+        
+    }
+
+    .left-auth-div h2 {
+        font-size: 1.5rem; /* Adjust heading size */
+    }
+
+    .welcome-message {
+        font-size: 1rem; /* Reduce font size */
+        margin-bottom: 15px;
+    }
+
+    .login-button button,
+    .signup-button button {
+        font-size: 0.9rem; /* Adjust button font size */
+        padding: 8px 15px; /* Reduce button padding */
+    }
+
+    .login-button, .signup-button {
+        padding: 8px; /* Adjust padding for smaller screens */
+    }
+}
+
+
+/****************************************************************************************************************************************/
+/* Form styling for signup-container */
+.signup-container, .login-container {
+    width: 100%;
+    max-width: 500px; /* Match the max width of other components */
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 90vh;
+}
+
+
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+		transform: translateY(-50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Form Heading */
+.signup-container h2, .login-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    
+}
+.signup-container fieldset, .login-container  fieldset{
+    border: 2px solid #ff00e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.signup-container legend, .login-container  legend{
+    font-size: 1.2rem;
+    color: gold;
+    padding: 0 5px;
+}
+
+/* Form Group */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #f0f0f0;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 98%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #ddd;
+    font-size: 14px;
+    color: #f0f0f0;
+    background-color: transparent;
+}
+.form-group input::placeholder{
+    color: #fac105fb;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Signup Button */
+.signup-btn, .form-group button {
+    width: 100%;
+    background-color: #ff00e6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Sign-in Link */
+.signin-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #f0f0f0;
+}
+
+.signin-link a {
+    color: gold;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signin-link a:hover {
+    text-decoration: underline;
+}
+
+
+@media (max-width: 800px) {
+    .signup-container, .login-container {
+        width: 100%; /* Reduce max width for smaller devices */
+        height: auto; /* Allow height to adjust dynamically */
+        padding: 15px 10px; /* Adjust padding */
+    }
+
+    .signup-container h2, .login-container h2 {
+        font-size: 20px; /* Smaller font size for headings */
+        margin-bottom: 15px;
+    }
+
+    .signup-container fieldset, .login-container fieldset {
+        padding: 15px; /* Adjust padding */
+        margin-bottom: 15px;
+    }
+
+    .form-group input {
+        width: 100%; /* Ensure inputs take full width */
+    }
+
+    .signup-btn, .form-group button {
+        font-size: 14px; /* Reduce button font size */
+        padding: 10px; /* Adjust padding */
+    }
+
+    .signin-link {
+        font-size: 12px; /* Smaller font size for links */
+        text-align: center; /* Center align the link */
+    }
+}
+
+
+/*------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* Style the congratulation overlay */
+.congratulation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Ensure it appears above other content */
+
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Show the overlay */
+.congratulation-overlay.active {
+   display: flex;
+}
+
+/* Style the close button */
+.congratulation-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 2.6rem;
+    width: 40px;
+    height: 40px;
+    border: 2px solid #f72585;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    z-index: 1010;
+    transition: transform 0.2s ease;
+}
+
+.congratulation-close:hover {
+    transform: scale(1.1);
+}
+
+/* Style the congratulation content container */
+.congratulation-content {
+    background: linear-gradient(135deg, #ff00e6, #7603b4);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    color: #f9f9f9;
+}
+
+/* Style the unordered list inside */
+.congratulation-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+}
+
+.congratulation-content ul li {
+    font-size: 1.2rem;
+    color: #f9f9f9;
+    margin: 10px;
+    border: #f9f9f9 2px solid;
+    padding: 4px 8px;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 90%;
+}
+
+/* Animation for content */
+.congratulation-content {
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/*------------------------------------------------------------------------------------------------------------------*/
