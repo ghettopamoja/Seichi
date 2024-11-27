@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     box-sizing: border-box;
@@ -23,7 +27,7 @@ header {
     top: 0;
     left: 0;
     position: fixed;
-    width: 98%;
+    width: 100%;
     z-index: 100;
     overflow: hidden; /* Ensures the shine effect doesn't overflow */
 }
@@ -163,7 +167,7 @@ header::after {
     margin-right: 25px;
     position: absolute;
     top: 25px;
-    right: 10px;
+    right: -15px;
 }
 
 .hamburger .bar {
@@ -211,7 +215,7 @@ header::after {
     header {
         padding: 5px 10px;
         background: linear-gradient(135deg, #f72585, #7209b7);
-        width: 95%;
+        width: 100%;
     }
 
     .navbar {
@@ -261,7 +265,7 @@ header::after {
     /* Show hamburger icon on small screens */
     .hamburger {
         display: flex;
-        margin-left: auto;
+        margin-left: 20px;
     }
 
     /* Search and Cart section */
@@ -289,14 +293,7 @@ header::after {
         display: inline-block;
     }
 
-    /* Adjust background size for smaller screens */
-    body {
-        background-size: cover;
-    }
-}
 
-/* When the hamburger is clicked, show the navigation and search-cart */
-@media screen and (max-width: 800px) {
     .navbar.active .nav-links {
         display: flex; /* Show the nav links */
     }
@@ -306,12 +303,11 @@ header::after {
         
     }
 
-    
-
     .navbar.active #search-cart {
         display: flex; /* Show search and cart */
     }
 }
+
 
 /**************************************************************************************************************************************/
 
@@ -349,168 +345,6 @@ header::after {
 
 
 /**********************************************************************************************************************************/
-
-/* Form styling for signup-container */
-.signup-container {
-    width: 100%;
-    max-width: 500px; /* Match the max width of other components */
-    padding: 10px 20px;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    height: 90vh;
-}
-
-
-@keyframes myAnim {
-	0% {
-		opacity: 0;
-		transform: translateY(-50px);
-	}
-
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-/* Form Heading */
-.signup-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #fff;
-    
-}
-
-/* Form Group */
-.form-group {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    font-size: 14px;
-    color: #f0f0f0;
-    margin-bottom: 5px;
-}
-
-.form-group input {
-    width: 98%;
-    padding: 10px;
-    border: none;
-    border-bottom: 2px solid #ddd;
-    font-size: 14px;
-    color: #f0f0f0;
-    background-color: transparent;
-}
-.form-group input::placeholder{
-    color: #fac105fb;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-/* Signup Button */
-.signup-btn {
-    width: 100%;
-    background-color: #ff00e6;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 12px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.signup-btn:hover {
-    background-color: #0056b3;
-}
-
-/* Sign-in Link */
-.signin-link {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #f0f0f0;
-}
-
-.signin-link a {
-    color: gold;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.signin-link a:hover {
-    text-decoration: underline;
-}
-
-@media  screen and (max-width: 800px) {
-    /* Signup container adjustments */
-    .signup-container {
-        width: 90%; /* Use 90% of the screen width for better fitting */
-        max-width: 400px; /* Reduce max width for smaller screens */
-        padding: 15px; /* Increase padding for spacing */
-        height: auto; /* Adjust height to fit content */
-        margin: 0 auto; /* Center the container */
-    }
-
-    /* Form Heading */
-    .signup-container h2 {
-        font-size: 20px; /* Adjust heading size for mobile */
-        margin-bottom: 15px;
-    }
-
-    /* Form Group adjustments */
-    .form-group {
-        margin-bottom: 15px; /* Reduce margin */
-    }
-
-    .form-group label {
-        font-size: 12px; /* Smaller font size for labels */
-    }
-
-    .form-group input {
-        font-size: 14px; /* Ensure input font is readable */
-        padding: 8px; /* Reduce padding inside inputs */
-    }
-
-    /* Adjust input focus */
-    .form-group input:focus {
-        box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
-    }
-
-    /* Signup Button adjustments */
-    .signup-btn {
-        font-size: 14px; /* Smaller font size for button */
-        padding: 10px; /* Adjust padding for mobile */
-    }
-
-    .signup-btn:hover {
-        background-color: #0056b3; /* Adjust hover color for better contrast */
-    }
-
-    /* Sign-in Link */
-    .signin-link {
-        margin-top: 10px;
-        font-size: 12px; /* Smaller font size for sign-in link */
-    }
-
-    .signin-link a {
-        font-size: 14px; /* Adjust font size for the link */
-    }
-
-    .signin-link a:hover {
-        text-decoration: underline;
-    }
-}
-
-
-/*******************************************************************************************************************/
-
 main {
     display: flex; /* Flexbox for side-by-side layout */
     width: 100%; /* Full width of the main container */
@@ -532,6 +366,7 @@ main .content, main .container {
 @media screen and (max-width: 800px) {
     /* Main container layout for small screens */
     main {
+        width: 100%;
         flex-direction: column; /* Stack the sections vertically */
         margin-top: 120px; /* Adjust margin to prevent overlap with fixed header */
     }
@@ -539,8 +374,8 @@ main .content, main .container {
     /* Adjust content and container section layout */
     main .content, main .container {
         flex: none; /* Remove the equal width for both sections */
-        width: 99%; /* Full width on small screens */
-        padding: 15px; /* Reduce padding for smaller screens */
+        width: 100%; /* Full width on small screens */
+        padding: 10px; /* Reduce padding for smaller screens */
         background-color: rgba(0, 0, 0, 0.05); /* Keep the soft background */
         margin-bottom: 20px; /* Add some space between sections */
     }
@@ -558,26 +393,39 @@ main .content, main .container {
 /* Style for video container */
 .video-intro-container {
     width: 100%; /* Stretch video to fit its parent */
-    max-width: 500px; /* Limit the video container width */
+    position:relative;
     border-radius: 10px;
     overflow: hidden;
     height: 100vh;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.video-intro-container::before{
+    content: ''; /* Required for pseudo-elements */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+    z-index: 1; /* Ensure it sits above the video but below the CTA */
+}
+
+.video-intro-container > * {
+    z-index: 2;
 }
 
 .video-intro-container video {
     width: 100%;
     height: auto; /* Maintain video aspect ratio */
     object-fit: cover; /* Prevent distortion */
+    
 }
 
 @media screen and (max-width: 800px) {
     /* Video container adjustments */
     .video-intro-container {
         width: 100%; /* Use full width of the screen */
-        max-width: 100%; /* Remove the max-width to allow full width */
         height: 80vh; /* Limit the height to half of the viewport height */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Reduce shadow for small screens */
         margin-bottom: 20px; /* Add margin for better spacing */
     }
 
@@ -596,15 +444,14 @@ main .content, main .container {
     display: flex; /* Side-by-side layout */
     align-items: center; /* Vertical alignment */
     gap: 20px; /* Space between image and text */
-    padding: 20px;
+    padding:10px 20px;
     background-color: rgba(0, 0, 0, 0.6); /* Soft pink */
     border: 2px solid #f72585; /* Theme-colored border */
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    margin: 20px 0; /* Vertical spacing between sections */
+    margin: 10px 0; /* Vertical spacing between sections */
     width: 100%; /* Make it responsive */
-    max-width: 500px; /* Limit width to prevent overflow */
-    height: 20vh;
+    height: 40vh;
 }
 
 .direct-div img {
@@ -616,7 +463,7 @@ main .content, main .container {
 
 .direct-div .text-direction h3 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     color: #f72585;
 }
 
@@ -632,14 +479,14 @@ main .content, main .container {
         border-radius: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         margin: 15px 0; /* Reduced margin for smaller screens */
-        width: 80%; /* Full width */
+        width: 98%; /* Full width */
         max-width: 100%; /* Remove max-width to fill screen */
         height: 20vh; /* Allow height to adjust based on content */
     }
 
     /* Image adjustments */
     .direct-div img {
-        width: 80%; /* Use 80% of the screen width */
+        width: 90%; /* Use 80% of the screen width */
         height: 80%; /* Maintain aspect ratio */
         max-width: 300px; /* Limit the width to prevent it from becoming too large */
         border-radius: 8px;
@@ -656,3 +503,256 @@ main .content, main .container {
 
 
 /*************************************************************************************************************************/
+
+/* Style the login page */
+.login-page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* Add the ::before overlay */
+.login-page::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+    z-index: 1; /* Ensure it sits above the video but below the CTA */
+}
+
+/* Style the video to ensure it's behind the overlay */
+.login-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0; /* Video stays in the background */
+    border-radius: 10px;
+}
+
+/* Style the CTA overlay */
+.cta-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2; /* Ensure the CTA appears above the overlay */
+}
+
+/* Style the CTA link */
+.cta-overlay a, .cta-overlay button {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #e91e63;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+/* Add hover effect for the CTA link */
+.cta-overlay a:hover , .cta-overlay button:hover {
+    transform: scale(1.1);
+    background-color: #0056b3;
+}
+
+/* Default styles for larger screens remain unchanged */
+
+/* Media query for screens with a max-width of 768px */
+@media (max-width: 800px) {
+    /* Login page container adjustments */
+    .login-page {
+        height: auto; /* Allow the page to expand naturally */
+        padding: 20px; /* Add padding for better spacing */
+        border-radius: 8px; /* Slightly smaller radius for compact layout */
+    }
+
+    /* Adjust the video size for smaller screens */
+    .login-video {
+        height: 60vh; /* Set a fixed height for the video */
+        object-fit: cover;
+    }
+
+    /* Adjust the ::before overlay */
+    .login-page::before {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)); /* Slightly darker gradient */
+    }
+
+    /* Style the CTA overlay to stack elements more neatly */
+    .cta-overlay {
+        position: absolute;
+        top: 50%; /* Center the CTA vertically */
+        left: 50%;
+        transform: translate(-50%, -50%); /* Ensure it's centered */
+        width: 90%; /* Allow some margin on the sides */
+        height: auto;
+        display: flex;
+        flex-direction: column; /* Stack the button/text vertically */
+        align-items: center;
+        justify-content: center;
+        z-index: 2; /* Ensure the CTA is above the overlay */
+    }
+
+    /* Adjust the CTA link/button styles */
+    .cta-overlay a, .cta-overlay button {
+        font-size: 1.2rem; /* Smaller font size */
+        padding: 8px 16px; /* Smaller padding for better fit */
+    }
+
+    /* Add a slight hover effect for smaller buttons */
+    .cta-overlay a:hover, .cta-overlay button:hover {
+        transform: scale(1.05); /* Smaller scale effect */
+    }
+}
+
+
+/**************************************************************************************************************************/
+
+.logo-greeting-image{
+    width: 100%;
+    height: 60vh;
+    background-image: url('logo\ \(2\).jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.logo-greeting-image::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+    z-index: 1; 
+    border-radius: 10px;
+}
+
+.logo-greeting-image > * {
+    z-index: 2;
+}
+
+.logo-greeting-image h3 {
+    font-size: 2.3rem;
+    background: linear-gradient(45deg, pink, orange);
+    -webkit-background-clip: text; /* Ensures gradient applies to text */
+    -webkit-text-fill-color: transparent; /* Makes the gradient visible */
+    background-clip: text; /* For non-webkit browsers supporting it */
+    text-fill-color: transparent; /* Fallback for non-webkit */
+}
+
+.gratitude-message {
+    width: 100%;
+    height: 60vh;
+    background-image: url('logo\ \(2\).jpg');
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 30px;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+.gratitude-message::before {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+    z-index: 1; 
+    border-radius: 10px;
+}
+
+.gratitude-message > * {
+    z-index: 2;
+}
+
+.gratitude-message h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #ffffff, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.gratitude-message p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Default styles for larger screens remain unchanged */
+
+/* Media query for screens with a max-width of 768px */
+@media (max-width: 800px) {
+    /* Display the logo greeting image and gratitude message */
+    .logo-greeting-image,
+    .gratitude-message {
+        display: flex; /* Make it visible and align items */
+        height: 50vh; /* Adjust the height for smaller screens */
+        margin-top: 20px; /* Reduce the top margin */
+    }
+    .gratitude-message{
+        height: 70vh;
+        padding: 10px;
+    }
+
+    /* Adjust the text inside .logo-greeting-image */
+    .logo-greeting-image h3 {
+        font-size: 1.8rem; /* Smaller font size for smaller screens */
+    }
+
+    /* Adjust gratitude-message content */
+    .gratitude-message h2 {
+        font-size: 2rem; /* Adjust headline size */
+    }
+
+    .gratitude-message p {
+        font-size: 1rem; /* Adjust paragraph size */
+        line-height: 1.4; /* Slightly tighter line spacing */
+    }
+
+    /* Adjust background image sizing for better fit */
+    .logo-greeting-image,
+    .gratitude-message {
+        background-size: contain; /* Ensure the background fits better */
+    }
+
+    .logo-greeting-image::before,
+    .gratitude-message::before {
+        border-radius: 5px; /* Smaller border radius for compact look */
+    }
+}
+
+/***********************************************************************************************************************************/
