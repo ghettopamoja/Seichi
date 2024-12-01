@@ -29,7 +29,6 @@ header {
     position: fixed;
     width: 100%;
     z-index: 100;
-    overflow: hidden; /* Ensures the shine effect doesn't overflow */
 }
 
 header::after {
@@ -64,6 +63,7 @@ header::after {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 /* Logo */
@@ -91,6 +91,12 @@ header::after {
     list-style: none;
     display: flex;
     gap: 20px;
+    opacity: 0;
+    pointer-events: none;
+}
+.nav-links.show{
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .nav-links a {
@@ -100,9 +106,21 @@ header::after {
     position: relative;
 }
 
+.nav-links li:hover{
+    border: #f9f9f9;
+    background-color: #7209b7;
+}
+
+.nav-links li.active{
+    border: #f9f9f9;
+    background-color: #7209b7;
+    border-radius: 5px;
+}
+
 /* Dropdown */
 .nav-links li {
     position: relative;
+    padding: 5px 10px;
 }
 
 .nav-links .dropdown {
@@ -110,10 +128,12 @@ header::after {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #fff;
-    color: #333;
+    background-color: #7209b7;
+    color: #f0f0f0;
+    
     list-style: none;
     padding: 10px;
+    z-index: 3;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -134,6 +154,13 @@ header::after {
     display: flex;
     align-items: center;
     gap: 15px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.search-cart.show{
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .search-cart input {
@@ -166,8 +193,8 @@ header::after {
     cursor: pointer;
     margin-right: 25px;
     position: absolute;
-    top: 25px;
-    right: -15px;
+    top: 10px;
+    right: -25px;
 }
 
 .hamburger .bar {
@@ -206,107 +233,144 @@ header::after {
 }
 
 
-@media  screen and (max-width: 800px) {
-    /* Navbar layout for small screens */
-    body{
-        width: 90%;
+@media screen and (max-width: 800px) {
+    /* Body Adjustments */
+    body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
+    /* Header Styling */
     header {
-        padding: 5px 10px;
+        padding: 10px 20px;
         background: linear-gradient(135deg, #f72585, #7209b7);
         width: 100%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
 
+    /* Navbar Layout */
     .navbar {
-        flex-direction: column; /* Stack elements vertically */
+        display: flex;
+        flex-direction: column;
         align-items: flex-start;
+        width: 100%;
+        position: relative;
     }
 
     .logo {
-        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
     }
 
-    /* Logo image size */
     .logo img {
         width: 40px;
         height: 40px;
     }
 
-    /* Hide the nav links by default */
-    .nav-links {
-        display: none;
-        width: 80%;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        margin-top: 10px;
+    /* Hamburger Icon */
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        margin-bottom: 10px;
     }
 
-    /* Show nav links when the navbar is active */
+    .hamburger .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #fff;
+        border-radius: 5px;
+        transition: transform 0.3s;
+    }
+
+    /* Nav Links */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        top: 100px;
+        left: 0;
+        padding: 15px;
+        border-radius: 10px;
+        animation: fadeIn 0.3s ease-in-out;
+    }
+
     .navbar.active .nav-links {
         display: flex;
-        gap: 15px;
     }
 
     .nav-links a {
-        padding: 10px;
-        width: 100%;
-        text-align: center;
+        color: #fff;
         font-size: 1.2rem;
+        text-align: center;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background 0.3s;
     }
 
-    .nav-links .dropdown {
-        position: static;
-        box-shadow: none;
-        background-color: transparent;
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.3);
     }
 
-    /* Show hamburger icon on small screens */
-    .hamburger {
-        display: flex;
-        margin-left: 20px;
-    }
-
-    /* Search and Cart section */
-    .search-cart {
+    .nav-links li {
         width: 100%;
-        justify-content: space-around;
+        border: 1px solid #f0f0f0;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+    }
+
+    /* Dropdown */
+    .nav-links .dropdown {
+        display: none;
+        flex-direction: column;
         margin-top: 10px;
+        background: transparent;
+        border-radius: 5px;
+        opacity: 0;
+    }
+
+
+    /* Search and Cart Section */
+    .search-cart {
+        display: none;
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
     }
 
     .search-cart input {
-        width: 70%;
+        width: 100%;
+        padding: 8px 10px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid #ddd;
         outline: none;
     }
 
-    .cart-icon, .account-icon {
-        font-size: 1.8rem;
+    .cart-icon,
+    .account-icon {
+        font-size: 1.5rem;
+        color: #fff;
+        text-align: center;
+        margin-top: 5px;
     }
 
-    /* Hide icons initially on small screens */
-    .search-cart a {
-        display: none;
+    /* Navbar Active State */
+    .navbar.active .search-cart {
+        display: flex;
     }
 
-    .navbar.active #search-cart a {
-        display: inline-block;
-    }
-
-
-    .navbar.active .nav-links {
-        display: flex; /* Show the nav links */
-    }
-
-    .navbar.active  .search-cart input {
-        width: 50%;
-        
-    }
-
-    .navbar.active #search-cart {
-        display: flex; /* Show search and cart */
-    }
 }
+
 
 
 /**************************************************************************************************************************************/
@@ -366,15 +430,16 @@ main .content, main .container {
 @media screen and (max-width: 800px) {
     /* Main container layout for small screens */
     main {
-        width: 100%;
+        width: 93vw;
         flex-direction: column; /* Stack the sections vertically */
         margin-top: 120px; /* Adjust margin to prevent overlap with fixed header */
+        
     }
 
     /* Adjust content and container section layout */
     main .content, main .container {
         flex: none; /* Remove the equal width for both sections */
-        width: 100%; /* Full width on small screens */
+        width: 98%; /* Full width on small screens */
         padding: 10px; /* Reduce padding for smaller screens */
         background-color: rgba(0, 0, 0, 0.05); /* Keep the soft background */
         margin-bottom: 20px; /* Add some space between sections */
@@ -712,20 +777,50 @@ main .content, main .container {
     margin-bottom: 10px;
 }
 
-/* Default styles for larger screens remain unchanged */
+.proceed-button{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    transform: translateY(-10px);
+    background-color: transparent;
+    border-top: 1px solid #f0f0f0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.proceed-button button{
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #e91e63;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.proceed-button button:hover{
+    transform: scale(1.1);
+    background-color: #0056b3;
+}
 
 /* Media query for screens with a max-width of 768px */
 @media (max-width: 800px) {
     /* Display the logo greeting image and gratitude message */
     .logo-greeting-image,
     .gratitude-message {
-        display: flex; /* Make it visible and align items */
-        height: 50vh; /* Adjust the height for smaller screens */
+        display: none; /* Make it visible and align items */
+        height: auto; /* Adjust the height for smaller screens */
         margin-top: 20px; /* Reduce the top margin */
     }
     .gratitude-message{
-        height: 70vh;
+        height: auto;
         padding: 10px;
+        
     }
 
     /* Adjust the text inside .logo-greeting-image */
@@ -753,6 +848,602 @@ main .content, main .container {
     .gratitude-message::before {
         border-radius: 5px; /* Smaller border radius for compact look */
     }
+    .proceed-button {
+        flex-direction: column; /* Stack buttons vertically */
+        padding: 10px 5px; /* Adjust padding for smaller screens */
+        transform: translateY(0); /* Remove translation for better positioning */
+        border-top: none; /* Simplify design for smaller screens */
+        border-bottom-left-radius: 5px; /* Adjust radius */
+        border-bottom-right-radius: 5px;
+    }
+
+    .proceed-button button {
+        font-size: 1rem; /* Reduce font size */
+        padding: 8px 15px; /* Adjust button size */
+        margin-bottom: 10px; /* Add spacing between buttons */
+        width: 90%; /* Make buttons occupy most of the width */
+        box-shadow: none; /* Simplify design */
+    }
+
+    .proceed-button button:last-child {
+        margin-bottom: 0; /* Remove margin for the last button */
+    }
 }
 
 /***********************************************************************************************************************************/
+
+section{
+    width: 100%;
+    min-height:100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+    display: none;
+    color: #f0f0f0;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Media Query for 768px or smaller */
+@media (max-width: 800px) {
+    section {
+        padding: 10px; /* Add padding for spacing */
+        font-size: 16px; /* Adjust font size for readability */
+        margin-top: 5px; /* Reduce margin for smaller screens */
+        text-align: center; /* Center-align text */
+        
+    }
+}
+
+/*********************************************************************************************************************************************/
+#Home .home-header, .ceo-page .header-about{
+    background-color: transparent;
+    width: 80%;
+    height: 17vh;
+    margin: 10px 0 0 10px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+}
+
+#Home .home-header h1, .ceo-page .header-about h1{
+    font-size: 30px;
+    font-family:Arial, Helvetica, sans-serif;
+    text-transform: capitalize;
+}
+
+.home-header .animation-header, .header-about .awesome-words{
+    background-color: transparent;
+    width: 60%;
+    height: 100%;
+    
+}
+
+.home-header .animation-header h1, .header-about .awesome-words h1 {
+    font-size: 25px;
+    background: linear-gradient(90deg, #3bfa01, rgb(0, 217, 255), #3bfa01); /* Gradient from orange to pink */
+    -webkit-background-clip: text; /* Ensures the background is clipped to the text */
+    background-clip: text;
+    color: transparent; /* Makes the text color transparent to reveal the gradient */
+    font-weight: bold; /* Optional: Makes the text bold for better visibility */
+    text-transform: capitalize;
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px);
+    text-align: center;
+    animation: fadeInUp 1s forwards; /* Animation lasts 1 second */
+}
+
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-section {
+    width: 100%;
+    height: 90vh;
+    border-radius: 10px;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    flex-direction: column;
+}
+
+.image-slide, .ceo-page .ceo-image {
+    width: 80%;
+    height: 99%;
+    background-color: #7209b7;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.image-slide img, .ceo-page .ceo-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    animation: myHeroAnim 2s ease 0s 1 normal forwards;
+}
+
+@keyframes myHeroAnim {
+	0% {
+		opacity: 0;
+		transform: translateX(-250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.slide-progress-control {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 10vh;
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.slide-progress-control .progress-truck {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.slide-progress-control .progress-truck .progress-bar {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #3bfa01, rgb(0, 217, 255), #3bfa01); 
+    border-radius: 10px;
+}
+
+.slide-progress-control button{
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #e91e63;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.slide-progress-control button:hover{
+    transform: scale(1.1);
+    background-color: #0056b3;
+}
+
+/* Media Query for 768px or smaller */
+@media (max-width: 800px) {
+    #Home .home-header, .ceo-page .header-about {
+        width: 99%; /* Adjust width to fit smaller screens */
+        height: auto; /* Allow height to adjust naturally */
+        margin: 5px auto; /* Center the header */
+        padding: 8px 10px; /* Reduce padding */
+        border-radius: 10px; /* Adjust border radius */
+        flex-direction: column; /* Stack items vertically */
+        justify-content: center; /* Center align the content */
+    }
+
+    #Home .home-header h1 , .ceo-page .header-about h1{
+        font-size: 18px; /* Reduce font size */
+        text-align: center; /* Center-align text */
+    }
+
+    .home-header .animation-header, .header-about .awesome-words {
+        width: 100%; /* Full width */
+        height: auto; /* Adjust height naturally */
+        margin-top: 10px; /* Add spacing */
+    }
+
+    .home-header .animation-header h1, .header-about .awesome-words h1 {
+        font-size: 18px; /* Adjust font size for smaller screens */
+        text-align: center; /* Ensure text remains centered */
+    }
+
+    .hero-section {
+        width: 99%;
+        height: auto; /* Allow height to adjust */
+        margin-top: 5px; /* Reduce top margin */
+        flex-direction: column; /* Stack content */
+        align-items: center; /* Center align items */
+    }
+
+    .image-slide, .ceo-page .ceo-image {
+        width: 100%; /* Adjust width */
+        height: 60vh; /* Reduce height */
+        margin-bottom: 10px; /* Add spacing */
+    }
+
+    .slide-progress-control {
+        width: 90%; /* Fit to smaller width */
+        height: auto; /* Adjust height naturally */
+        flex-direction: column; /* Stack items vertically */
+        padding: 5px; /* Reduce padding */
+    }
+
+    .slide-progress-control .progress-truck {
+        height: 8px; /* Reduce height for smaller screens */
+    }
+
+    .slide-progress-control button {
+        font-size: 1rem; /* Reduce button font size */
+        padding: 8px 15px; /* Adjust button size */
+    }
+}
+
+.featured-clothings{
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.featured-clothings h2{
+    text-align: left;
+}
+
+.featured-clothings ul {
+    list-style: none;
+    width: 100%;
+    height: 80vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+    gap: 10px; /* Optional: adds space between grid items */
+    padding: 0;
+    list-style: none;
+    scrollbar-width: none;
+}
+
+.featured-clothings ul::-webkit-scrollbar{
+    display: none;
+}
+
+.featured-clothings ul li {
+    height: 75vh;
+    border: 2px solid #f0f0f0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 10px;
+    background: linear-gradient(45deg,rgba(183, 9, 128, 0.535), rgba(113, 9, 183, 0.535));
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 10px 6px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.title-design h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin: 0;
+    color: #f9f9f9;
+    text-align: center;
+    padding: 10px 0;
+    text-transform: capitalize;
+}
+
+.image-design{
+    width: 100%;
+    height: 60vh;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.image-design img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    filter: grayscale(60%);
+}
+
+.featured-clothings ul li:hover .image-design img {
+    filter: grayscale(0%);
+}
+
+.detail-design {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.price {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+.new-price span {
+    color: #3bfa01;
+    font-weight: bold;
+}
+
+.discount-price span {
+    text-decoration: line-through;
+    color: gold;
+}
+
+.left-overs {
+    font-size: 1.3rem;
+    color: #f0f0f0;
+    display: flex;
+    text-align: left;
+    width: 100%;
+    
+}
+
+.purchase-button {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+.purchase-button button {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #e91e63;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.purchase-button button:first-child{
+    background-color: darkgreen;
+}
+
+.purchase-button button:first-child:hover{
+    background-color: orange;
+}
+
+.purchase-button button:hover {
+    background-color: #c2185b;
+}
+
+.more-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.more-details span {
+    color: #333;
+}
+
+@media screen and (max-width: 800px) {
+    .featured-clothings {
+        padding: 10px;
+        align-items: center; /* Center align items */
+    }
+
+    .featured-clothings h2 {
+        font-size: 1.8rem;
+        text-align: center; /* Center-align the heading for small screens */
+        margin-bottom: 20px;
+    }
+
+    .featured-clothings ul {
+        grid-template-columns: 1fr; /* Single column layout for small screens */
+        gap: 15px;
+        height: auto; /* Let the height adjust naturally */
+    }
+
+    .featured-clothings ul li {
+        height: auto; /* Allow dynamic height based on content */
+        padding: 15px;
+        margin: 5px 0;
+    }
+
+    .image-design {
+        height: 40vh; /* Reduce the image height */
+    }
+
+    .image-design img {
+        object-fit: cover;
+    }
+
+    .title-design h3 {
+        font-size: 1.2rem; /* Adjust font size for small screens */
+        padding: 5px 0;
+    }
+
+    .price {
+        font-size: 1rem; /* Reduce font size slightly */
+        flex-direction: row; /* Stack the prices vertically */
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .new-price span,
+    .discount-price span {
+        font-size: 1rem;
+    }
+
+    .left-overs {
+        font-size: 1rem; /* Adjust font size for clarity */
+        text-align: center; /* Center-align for small screens */
+    }
+
+    .purchase-button {
+        flex-direction: row; /* Stack buttons vertically */
+        gap: 10px;
+        width: 100%;
+    }
+
+    .purchase-button button {
+        font-size: 1rem; /* Adjust button font size */
+        padding: 8px 15px;
+    }
+
+    .more-details {
+        font-size: 1.2rem; /* Adjust font size for small screens */
+        flex-direction: column; /* Stack elements */
+        gap: 5px;
+    }
+
+    .more-details span {
+        font-size: 1rem;
+    }
+}
+
+
+
+/*------------------------------------------------------------------------------------------------------------------------------------------*/
+.ceo-page{
+    width: 100%;
+    height: 120vh;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ceo-page .ceo-image{
+    margin-top: 20px;
+    height: 100vh;
+}
+
+.about-message{
+    width: 100%;
+    height: 50vh;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.about-message .text-content {
+    width: 80%;
+    height: 50vh;
+    font-size: 30px;
+    border: 2px solid #f0f0f0;
+    border-radius: 10px;
+    padding: 10px;
+    background: linear-gradient(45deg,rgba(183, 9, 128, 0.535), rgba(113, 9, 183, 0.535));
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.read-buttons {
+    width: 20%;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 5px;
+    right: 150px;
+    padding: 10px;
+    background-color: transparent;
+
+}
+
+.read-buttons  button{
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #e91e63;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.read-buttons  button:hover {
+    background-color: #0056b3;
+}
+
+.read-buttons  button:disabled {
+    opacity: 0.3;
+    background-color: transparent;
+    cursor: not-allowed;
+}
+
+@media screen and (max-width: 768px) {
+    .ceo-page {
+        height: 100vh;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .ceo-page .ceo-image {
+        margin-top: 10px;
+        height: 50vh; /* Reduce image height for smaller screens */
+    }
+
+    .about-message {
+        width: 99%;
+        min-height: 30vh;
+        height: auto;
+        flex-direction: column;
+        padding: 10px;
+        
+    }
+
+    .about-message .text-content {
+        width: 100%;
+        height: auto; /* Allow height to adjust based on content */
+        font-size: 20px; /* Reduce font size for readability */
+        padding: 15px;
+        text-align: left;
+    }
+
+    .read-buttons {
+        width: 100%;
+        bottom: -10px;
+        right: 0;
+        justify-content: center; /* Center align buttons for smaller screens */
+        gap: 10px; /* Add spacing between buttons */
+       
+    }
+
+    .read-buttons button {
+        font-size: 1rem;
+        padding: 8px 15px; /* Reduce padding for smaller buttons */
+        border: 2px solid #f9f9f9;
+    }
+}
+
+/**************************************************************************************************************************************/
