@@ -101,6 +101,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if(navLinks.classList.contains("show")){
                 navLinks.classList.remove("show");
             }
+
+            enableLinks(true);
         })
     });
 
@@ -146,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinks.querySelectorAll("ul li")[index].classList.add('active');
         container.style.display = "none";
         content.style.display = "none";
+        
     }
 
     document.querySelectorAll('.proceed-button button')[0].onclick = function() {
@@ -160,6 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
         enableLinks(true);
         clearInterval(heroInterval);
         showAbout();
+        
     }
 
     
